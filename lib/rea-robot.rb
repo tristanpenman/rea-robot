@@ -1,0 +1,1 @@
+require 'rea-robot/simulator'

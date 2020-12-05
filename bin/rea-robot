@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+# Add lib directory to front of include path
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+
+require 'rea-robot'
+
+simulator = ReaRobot::Simulator.new
+
+$stdin.each do |line|
+  line.strip!
+  if line.length > 0
+    begin
+      result = simulator.parse(line)
+      if result
+        puts result
+      end
+    rescue
+      puts $!
+    end
+  end
+end
